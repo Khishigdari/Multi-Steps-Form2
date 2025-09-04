@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { Button, DateField, ImageField, Join } from ".";
 
-export const Forms3 = ({ setStep, form, setForm }) => {
+export const Forms3 = ({ setStep, form, setForm, date, image }) => {
   const [errors, setErrors] = useState({});
   const [preview, setPreview] = useState();
 
@@ -51,12 +51,14 @@ export const Forms3 = ({ setStep, form, setForm }) => {
       <div className="w-[480px] h-fit bg-white p-[32px] rounded-[8px] ">
         <Join></Join>
         <DateField
+          value={form.date}
           label={"Date of birth"}
           onChange={(e) => setForm({ ...form, date: e.target.value })}
           error={errors.date}
           errors={errors}
         ></DateField>
         <ImageField
+          // value={form.image} //<==========
           label={"Profile image"}
           onChange={(e) => {
             handleImageChange(e);
@@ -65,6 +67,7 @@ export const Forms3 = ({ setStep, form, setForm }) => {
           error={errors.image}
           errors={errors}
           preview={preview}
+          date={date}
         ></ImageField>
         <div className="flex gap-2">
           <Button variant="secondary" goBack={goBack}>

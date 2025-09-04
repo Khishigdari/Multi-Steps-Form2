@@ -1,4 +1,4 @@
-export const DateField = ({ label, value, error, onChange, placeholder }) => {
+export const DateField = ({ label, error, onChange, placeholder, value }) => {
   return (
     <div>
       <p className="font-semibold text-[14px] text-[#334155] mb-2">
@@ -12,6 +12,7 @@ export const DateField = ({ label, value, error, onChange, placeholder }) => {
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        max="2012-12-31"
       />
       {error && <div className="text-[#E14942] text-[14px] mb-3">{error}</div>}
     </div>

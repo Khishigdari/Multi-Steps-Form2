@@ -14,8 +14,6 @@ export const Forms = ({
 
   function gotoNext() {
     const newErrors = {};
-
-    // const nameRegex = /^[A-Za-z]+\s[A-Za-z]+$/;
     const nameRegex = /^[a-z ,.'-]+$/i;
 
     if (nameRegex.test(firstName)) {
@@ -59,32 +57,26 @@ export const Forms = ({
         <Join></Join>
         <InputField
           label={"First name"}
-          // inputValue={firstName}
           onChange={(e) => setForm({ ...form, firstName: e.target.value })}
           error={errors.firstName}
           value={firstName}
           placeholder="First name"
-          // setErrors={setErrors}
           errors={errors}
         ></InputField>
         <InputField
           label={"Last name"}
-          // inputValue={lastName}
           onChange={(e) => setForm({ ...form, lastName: e.target.value })}
           error={errors.lastName}
           value={lastName}
           placeholder="Last name"
-          // setErrors={setErrors}
           errors={errors}
         ></InputField>
         <InputField
           label={"Username"}
-          // inputValue={lastName}
           onChange={(e) => setForm({ ...form, username: e.target.value })}
           error={errors.username}
           value={username}
           placeholder="Username"
-          // setErrors={setErrors}
           errors={errors}
         ></InputField>
         <div className="flex gap-2">

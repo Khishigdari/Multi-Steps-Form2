@@ -16,7 +16,6 @@ export const Forms2 = ({
   function gotoNext() {
     const newErrors = {};
 
-    // const nameRegex = /^[A-Za-z]+\s[A-Za-z]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^[0-9]{8}$/;
     const passwordRegex =

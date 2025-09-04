@@ -1,4 +1,4 @@
-export const ImageField = ({ label, preview, error, onChange }) => {
+export const ImageField = ({ label, preview, error, onChange, value }) => {
   return (
     <div>
       <p className="font-semibold text-[14px] text-[#334155] mb-2">
