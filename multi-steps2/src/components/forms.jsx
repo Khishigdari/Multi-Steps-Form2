@@ -9,14 +9,9 @@ export const Forms = ({
   firstName,
   lastName,
   username,
-  email,
-  phone,
-  password,
-  confirm,
-  date,
-  image,
 }) => {
   const [errors, setErrors] = useState({});
+
   function gotoNext() {
     const newErrors = {};
 
@@ -47,9 +42,13 @@ export const Forms = ({
     setErrors(newErrors);
 
     if (!newErrors.firstName && !newErrors.lastName && !newErrors.username) {
+      localStorage.setItem("my-form", JSON.stringify(form));
+
       setStep("second");
     }
   }
+  console.log(form);
+
   return (
     <motion.div
       className="inter w-full h-screen bg-[#F4F4F4] pt-[60px] flex justify-center box-border relative"
@@ -60,40 +59,37 @@ export const Forms = ({
         <Join></Join>
         <InputField
           label={"First name"}
-          type="text"
-          inputValue={firstName}
+          // inputValue={firstName}
           onChange={(e) => setForm({ ...form, firstName: e.target.value })}
           error={errors.firstName}
+          value={firstName}
           placeholder="First name"
-          setErrors={setErrors}
+          // setErrors={setErrors}
           errors={errors}
         ></InputField>
         <InputField
           label={"Last name"}
-          type="text"
-          inputValue={lastName}
+          // inputValue={lastName}
           onChange={(e) => setForm({ ...form, lastName: e.target.value })}
           error={errors.lastName}
+          value={lastName}
           placeholder="Last name"
-          setErrors={setErrors}
+          // setErrors={setErrors}
           errors={errors}
         ></InputField>
         <InputField
           label={"Username"}
-          type="text"
-          inputValue={username}
-          onChange={(e) => setForm({ ...form, Username: e.target.value })}
-          error={errors.Username}
-          placeholder="Username "
-          setErrors={setErrors}
+          // inputValue={lastName}
+          onChange={(e) => setForm({ ...form, username: e.target.value })}
+          error={errors.username}
+          value={username}
+          placeholder="Username"
+          // setErrors={setErrors}
           errors={errors}
         ></InputField>
         <div className="flex gap-2">
-          <Button variant="secondary" gotoNext={gotoNext}>
-            Back
-          </Button>
-          <Button variant="secondary" gotoNext={gotoNext}>
-            Continue
+          <Button variant="primary" gotoNext={gotoNext}>
+            Continue 1/3 <img className="w-6 h-6" src="chevron_right.svg" />
           </Button>
         </div>
       </div>

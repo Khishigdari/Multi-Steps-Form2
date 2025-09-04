@@ -1,4 +1,4 @@
-export const Button = ({ children, variant, gotoNext }) => {
+export const Button = ({ children, variant, gotoNext, goBack }) => {
   let classes =
     "rounded-[6px] px-3 py-[10px] mt-[82px] flex justify-center gap-1 cursor-pointer";
   if (variant === "primary") {
@@ -6,10 +6,15 @@ export const Button = ({ children, variant, gotoNext }) => {
   } else if (variant === "secondary") {
     classes += " w-[128px] border-[#CBD5E1] border-1";
   }
+
   return (
-    <button onClick={gotoNext} className={classes}>
-      {children}
-      {/* <img className="w-6 h-6" src="chevron_right.svg" /> */}
-    </button>
+    <>
+      <button
+        onClick={variant === "primary" ? gotoNext : goBack}
+        className={classes}
+      >
+        {children}
+      </button>
+    </>
   );
 };

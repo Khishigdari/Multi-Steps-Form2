@@ -1,37 +1,40 @@
 "use client";
 import React, { useState } from "react";
-import { Forms } from "@/components";
+import { Forms, Forms2, Forms3, Forms4 } from "@/components";
 
 export default function Home() {
   const [step, setStep] = useState("first");
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    username: "",
-    email: "",
-    phone: "",
-    password: "",
-    confirm: "",
-    date: "",
-    image: "",
-  });
+  const localForm =
+    typeof window !== "undefined" ? localStorage.getItem("my-form") : null;
+
+  console.log(localForm);
+
+  const [form, setForm] = useState(
+    localForm
+      ? JSON.parse(localForm)
+      : {
+          firstName: "",
+          lastName: "",
+          username: "",
+          email: "",
+          phone: "",
+          password: "",
+          confirm: "",
+          date: "",
+          image: "",
+        }
+  );
 
   if (step === "first") {
     return (
       <div>
         <Forms
           setStep={setStep}
-          from={form}
+          form={form}
           setForm={setForm}
           firstName={form.firstName}
           lastName={form.lastName}
           username={form.username}
-          email={form.email}
-          phone={form.phone}
-          password={form.password}
-          confirm={form.confirm}
-          date={form.date}
-          image={form.image}
         ></Forms>
       </div>
     );
@@ -39,47 +42,35 @@ export default function Home() {
   if (step === "second") {
     return (
       <div>
-        <Forms
+        <Forms2
           setStep={setStep}
-          from={form}
+          form={form}
           setForm={setForm}
-          firstName={form.firstName}
-          lastName={form.lastName}
-          username={form.username}
           email={form.email}
           phone={form.phone}
           password={form.password}
           confirm={form.confirm}
-          date={form.date}
-          image={form.image}
-        ></Forms>
+        ></Forms2>
       </div>
     );
   }
   if (step === "third") {
     return (
       <div>
-        <Forms
+        <Forms3
           setStep={setStep}
-          from={form}
+          form={form}
           setForm={setForm}
-          firstName={form.firstName}
-          lastName={form.lastName}
-          username={form.username}
-          email={form.email}
-          phone={form.phone}
-          password={form.password}
-          confirm={form.confirm}
           date={form.date}
           image={form.image}
-        ></Forms>
+        ></Forms3>
       </div>
     );
   }
   if (step === "fourth") {
     return (
       <div>
-        <Forms></Forms>
+        <Forms4></Forms4>
       </div>
     );
   }
