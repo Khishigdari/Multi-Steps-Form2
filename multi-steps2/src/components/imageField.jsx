@@ -15,6 +15,9 @@ export const ImageField = ({ label, preview, error, onChange, value }) => {
           />
         )}
         <input
+          value={value}
+          // accept="image/png, image/svg, image/jpg, image/jpeg"
+          accept="image/jpg, image/jpeg"
           type="file"
           className=" absolute opacity-0 inset-0"
           onChange={onChange}

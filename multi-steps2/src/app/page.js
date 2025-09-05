@@ -1,29 +1,37 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Forms, Forms2, Forms3, Forms4 } from "@/components";
 
 export default function Home() {
   const [step, setStep] = useState("first");
-  const localForm =
-    typeof window !== "undefined" ? localStorage.getItem("my-form") : null;
+  // const localForm =
+  //   typeof window !== "undefined" ? localStorage.getItem("my-form") : null;
 
-  console.log(localForm);
+  // console.log(localForm);
 
   const [form, setForm] = useState(
-    localForm
-      ? JSON.parse(localForm)
-      : {
-          firstName: "",
-          lastName: "",
-          username: "",
-          email: "",
-          phone: "",
-          password: "",
-          confirm: "",
-          date: "",
-          image: "",
-        }
+    // localForm
+    //   ? JSON.parse(localForm)
+    //   :
+    {
+      firstName: "",
+      lastName: "",
+      username: "",
+      email: "",
+      phone: "",
+      password: "",
+      confirm: "",
+      date: "",
+      image: "",
+    }
   );
+
+  useEffect(() => {
+    const localForm = localStorage.getItem("my-form");
+    if (localForm) {
+      setForm(JSON.parse(localForm));
+    }
+  }, []);
 
   if (step === "first") {
     return (

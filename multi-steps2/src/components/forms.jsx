@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, InputField, Join } from ".";
 
 export const Forms = ({
@@ -11,6 +11,45 @@ export const Forms = ({
   username,
 }) => {
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const newErrors = {};
+    const nameRegex = /^[a-z ,.'-]+$/i;
+
+    if (nameRegex.test(firstName) || form.firstName === "") {
+      newErrors.firstName = null;
+    } else {
+      newErrors.firstName =
+        "First name cannot contain special characters or numbers.";
+    }
+    setErrors({ ...errors, ...newErrors });
+  }, [form.firstName]);
+
+  useEffect(() => {
+    const newErrors = {};
+    const nameRegex = /^[a-z ,.'-]+$/i;
+
+    if (nameRegex.test(lastName) || form.lastName === "") {
+      newErrors.lastName = null;
+    } else {
+      newErrors.lastName =
+        "Last name cannot contain special characters or numbers.";
+    }
+    setErrors({ ...errors, ...newErrors });
+  }, [form.lastName]);
+
+  useEffect(() => {
+    const newErrors = {};
+    const nameRegex = /^[a-z ,.'-]+$/i;
+
+    if (nameRegex.test(username) || form.username === "") {
+      newErrors.username = null;
+    } else {
+      newErrors.username =
+        "Username cannot contain special characters or numbers.";
+    }
+    setErrors({ ...errors, ...newErrors });
+  }, [form.username]);
 
   function gotoNext() {
     const newErrors = {};
@@ -52,6 +91,7 @@ export const Forms = ({
       className="inter w-full h-screen bg-[#F4F4F4] pt-[60px] flex justify-center box-border relative"
       initial={{ opacity: 0, right: -30 }}
       animate={{ opacity: 1, right: 0 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="w-[480px] h-fit bg-white p-[32px] rounded-[8px] ">
         <Join></Join>

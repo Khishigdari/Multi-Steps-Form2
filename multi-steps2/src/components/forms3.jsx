@@ -10,7 +10,7 @@ export const Forms3 = ({ setStep, form, setForm, date, image }) => {
     const newErrors = {};
 
     const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    const imageRegex = /\.(jpg|jpeg|png)$/i;
+    const imageRegex = /\.(jpg|jpeg|png|svg)$/i;
 
     if (dateRegex.test(form.date)) {
       newErrors.date = null;
@@ -47,6 +47,7 @@ export const Forms3 = ({ setStep, form, setForm, date, image }) => {
       className="inter w-full h-screen bg-[#F4F4F4] pt-[60px] flex justify-center box-border relative"
       initial={{ opacity: 0, right: -30 }}
       animate={{ opacity: 1, right: 0 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="w-[480px] h-fit bg-white p-[32px] rounded-[8px] ">
         <Join></Join>
@@ -58,7 +59,7 @@ export const Forms3 = ({ setStep, form, setForm, date, image }) => {
           errors={errors}
         ></DateField>
         <ImageField
-          // value={form.image} //<==========
+          // value={HTMLInputElement.files} //<==========
           label={"Profile image"}
           onChange={(e) => {
             handleImageChange(e);
